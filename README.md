@@ -45,18 +45,22 @@ You need to set the game UDP settings to your **local device IP address**.
 
 -----
 
-Installation
+## Installation
 This project assumes you already have Grafana installed and running correctly.
-Requirements
-Python 3.12 or higher
-Install the telemetry package using:
-pipx install f1-25_telemetry.py
-Grafana Setup (Required for Dashboard Visualization)
+### Requirements
+- Python 3.12 or higher
+- Install the telemetry package using:
+```bash
+  pipx install f1-25_telemetry.py
+```
+
+### Grafana Setup (Required for Dashboard Visualization)
 <img width="575" height="202" alt="Screenshot 2026-01-12 at 7 24 18 PM" src="https://github.com/user-attachments/assets/1a26d919-2d54-4df5-95e9-7e9ebfdada1d" />
-This setup is required only if you want to display telemetry data on the Grafana dashboard.
-The video linked above walks through the entire process—simply paste your localhost URL and Grafana API token when prompted.
+This setup is required only if you want to display telemetry data on the Grafana dashboard. The video linked above walks through the entire process—simply paste your localhost URL and Grafana API token when prompted.
+----------------------
 <img width="709" height="232" alt="Screenshot 2026-01-12 at 7 28 39 PM" src="https://github.com/user-attachments/assets/976ea789-dbee-4845-bbf6-b60e5c143e20" />
-UDP Packet Header Format
+
+#### UDP Packet Header Format
 The header format defines how Python reads and parses UDP packets sent from the F1 25 game.
 In the official documentation, packet structures are written in C++, but we need to convert them into a Python-compatible format.
 Example from the documentation (C++):
