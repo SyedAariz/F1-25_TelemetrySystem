@@ -54,18 +54,29 @@ This project assumes you already have Grafana installed and running correctly.
   pipx install f1-25_telemetry.py
 ```
 
-### Grafana Setup (Required for Dashboard Visualization)
+#### Grafana Setup (Required for Dashboard Visualization)
 <img width="575" height="202" alt="Screenshot 2026-01-12 at 7 24 18 PM" src="https://github.com/user-attachments/assets/1a26d919-2d54-4df5-95e9-7e9ebfdada1d" />
-This setup is required only if you want to display telemetry data on the Grafana dashboard. The video linked above walks through the entire process—simply paste your localhost URL and Grafana API token when prompted.
-----------------------
+
+*This setup is only required if you want to visualize telemetry data in Grafana.*
+
+The video linked above walks through the entire process step-by-step.
+When prompted, simply paste:
+- Your localhost URL
+- Your Grafana API token
+Once configured, telemetry data will stream live to your dashboard.
+
 <img width="709" height="232" alt="Screenshot 2026-01-12 at 7 28 39 PM" src="https://github.com/user-attachments/assets/976ea789-dbee-4845-bbf6-b60e5c143e20" />
 
 #### UDP Packet Header Format
-The header format defines how Python reads and parses UDP packets sent from the F1 25 game.
-In the official documentation, packet structures are written in C++, but we need to convert them into a Python-compatible format.
-Example from the documentation (C++):
+The UDP packet header defines how Python reads and parses telemetry packets sent from the F1 25 game.
+
+The official F1 documentation defines packet structures in C++, but Python requires converting these into a struct-compatible format.
+
 <img width="895" height="439" alt="Screenshot 2026-01-12 at 7 32 37 PM" src="https://github.com/user-attachments/assets/17e3594c-50e2-47b8-b591-35ae2c1dbfa7" />
-C++ → Python Type Conversion Cheat Sheet
+
+#### C++ → Python Type Conversion Cheat Sheet
+
+```bash
 Use the following mapping when converting packet definitions from C++ to Python’s struct format:
 uint8   → B
 int8    → b
@@ -77,16 +88,23 @@ uint64  → Q
 int64  → q
 float   → f
 char[N] → Ns
-Creating or Extending Packets
+```
+
+### Creating or Extending Packets
 <img width="742" height="403" alt="Screenshot 2026-01-12 at 7 37 15 PM" src="https://github.com/user-attachments/assets/33b372d8-e23e-4b91-bc7e-9368e1f96539" />
+
 If you want to create your own packet from the documentation or extend an existing one:
-Follow the same Python struct format
-Include every variable listed in the documentation, even if you don’t plan to use all of them
-Maintain the correct field order
+
+- Follow the same Python struct format
+- Include every variable listed in the documentation, even if you don’t plan to use all of them
+- Maintain the correct field order
 This ensures the packet stays aligned and is parsed correctly.
-Packet IDs
+
+#### Packet IDs
+
 These packet IDs determine which telemetry category you are accessing (e.g., Motion, Lap Data, Car Telemetry).
 <img width="677" height="598" alt="Screenshot 2026-01-12 at 7 39 26 PM" src="https://github.com/user-attachments/assets/bbe2bd7e-210b-40e7-89ce-de9015b755b0" />
+
 Each packet ID maps to a specific data structure, allowing the application to route and process telemetry data correctly.
 
 ------
