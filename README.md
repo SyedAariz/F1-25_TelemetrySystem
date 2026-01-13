@@ -43,46 +43,26 @@ You need to set the game UDP settings to your **local device IP address**.
 - ✅ **Telemetry: Restricted** *(optional)*  
   (Use this if you don’t want anyone else accessing telemetry)
 
----
+-----
 
-## 📍 How to Find Your Local IP Address
-
-### Mac
-```bash
-ipconfig getifaddr en0
-Windows
-ipconfig
-Use your IPv4 address (usually something like 192.168.x.x) in the game’s UDP IP Address field.
-🧩 Installation
-Assuming you already have Grafana running:
+Installation
+This project assumes you already have Grafana installed and running correctly.
 Requirements
-Python >= 3.12
-Install
+Python 3.12 or higher
+Install the telemetry package using:
 pipx install f1-25_telemetry.py
-🔐 Grafana API Token Setup (Required for Dashboard Updates)
-If you want the telemetry to appear on your Grafana dashboard, you’ll need to configure:
-Your Grafana localhost URL
-Your Grafana API token
-This screenshot shows the setup that’s required:
+Grafana Setup (Required for Dashboard Visualization)
 <img width="575" height="202" alt="Screenshot 2026-01-12 at 7 24 18 PM" src="https://github.com/user-attachments/assets/1a26d919-2d54-4df5-95e9-7e9ebfdada1d" />
-The video tutorial above walks through generating a token — after that you just paste your localhost and API token into the code.
-
+This setup is required only if you want to display telemetry data on the Grafana dashboard.
+The video linked above walks through the entire process—simply paste your localhost URL and Grafana API token when prompted.
 <img width="709" height="232" alt="Screenshot 2026-01-12 at 7 28 39 PM" src="https://github.com/user-attachments/assets/976ea789-dbee-4845-bbf6-b60e5c143e20" />
-🧠 Understanding the UDP Header Format
-The UDP packets from F1 25 always start with a header.
-That header tells you important things like:
-
-which packet type it is (packetId)
-session time
-frame number
-player car index
-etc.
-In the F1 documentation, the header is defined in C++ like this:
+UDP Packet Header Format
+The header format defines how Python reads and parses UDP packets sent from the F1 25 game.
+In the official documentation, packet structures are written in C++, but we need to convert them into a Python-compatible format.
+Example from the documentation (C++):
 <img width="895" height="439" alt="Screenshot 2026-01-12 at 7 32 37 PM" src="https://github.com/user-attachments/assets/17e3594c-50e2-47b8-b591-35ae2c1dbfa7" />
-But in Python, we parse it using struct format strings.
-
-🔄 C++ → Python Struct Cheat Sheet
-Here’s the conversion you’ll use when translating packet structs from the official docs into Python:
+C++ → Python Type Conversion Cheat Sheet
+Use the following mapping when converting packet definitions from C++ to Python’s struct format:
 uint8   → B
 int8    → b
 uint16  → H
@@ -90,26 +70,17 @@ int16   → h
 uint32  → I
 int32   → i
 uint64  → Q
-int64   → q
+int64  → q
 float   → f
 char[N] → Ns
-➕ Adding New Packets / Expanding Telemetry
-If you want to add a new packet from the documentation (or expand existing ones), use this approach:
+Creating or Extending Packets
 <img width="742" height="403" alt="Screenshot 2026-01-12 at 7 37 15 PM" src="https://github.com/user-attachments/assets/33b372d8-e23e-4b91-bc7e-9368e1f96539" />
-⚠️ Important Rule:
-When defining packet formats, include every field from the official struct, even if you don’t use it.
-
-If you skip fields, Python will read the wrong bytes and everything after that will become corrupted.
-
-🧾 Packet IDs (Packet Categories)
-Packet IDs tell you what type of packet you received (lap data, telemetry, motion, etc.).
-These are the packet categories you’ll use to route parsing logic:
+If you want to create your own packet from the documentation or extend an existing one:
+Follow the same Python struct format
+Include every variable listed in the documentation, even if you don’t plan to use all of them
+Maintain the correct field order
+This ensures the packet stays aligned and is parsed correctly.
+Packet IDs
+These packet IDs determine which telemetry category you are accessing (e.g., Motion, Lap Data, Car Telemetry).
 <img width="677" height="598" alt="Screenshot 2026-01-12 at 7 39 26 PM" src="https://github.com/user-attachments/assets/bbe2bd7e-210b-40e7-89ce-de9015b755b0" />
-✅ Notes / Best Practices
-Keep UDP send rate around 20Hz for the best “live” feel
-Keep the port at 20777
-Make sure your game IP matches your computer IP exactly
-If telemetry looks wrong, it’s usually caused by:
-wrong struct format
-missing fields in a packet
-wrong packet version
+Each packet ID maps to a specific data structure, allowing the application to route and process telemetry data correctly.
