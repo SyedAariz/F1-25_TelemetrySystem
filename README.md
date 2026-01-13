@@ -1,4 +1,4 @@
-# 🏎️ F1-25_TelemetrySystem
+# F1-25_TelemetrySystem
 
 This Python application listens for **UDP telemetry packets from F1 25** and displays the data on a **live Grafana dashboard** (real-time charts for things like speed, throttle, brake, RPM, etc.).
 
@@ -8,7 +8,7 @@ This Python application listens for **UDP telemetry packets from F1 25** and dis
 
 ## ✅ Pre-Requisites
 
-### 🎮 F1 25 Game
+### F1 25 Game
 The whole point of this project is to collect the UDP packets that F1 25 sends through the in-game telemetry settings.
 
 > You *can* tweak the packet formats to support older F1 games too.
@@ -17,9 +17,10 @@ The whole point of this project is to collect the UDP packets that F1 25 sends t
 Grafana is an open-source platform for real-time dashboards and visual analysis.
 
 I recommend this tutorial for setting up Grafana:
+
 https://www.youtube.com/watch?v=QGG_76OmRnA&pp=ygUTZ3JhZmFuYSBpbmZsdXhkYiBmMQ%3D%3D
 
-> **Important:** That video includes **InfluxDB**, but **InfluxDB is NOT required** for this project — ignore the InfluxDB steps.
+> **Important:** That video includes **InfluxDB**, but **InfluxDB is NOT required** for this project, ignore the InfluxDB steps.
 
 ---
 
@@ -55,6 +56,7 @@ This project assumes you already have Grafana installed and running correctly.
 ```
 
 #### Grafana Setup (Required for Dashboard Visualization)
+
 <img width="575" height="202" alt="Screenshot 2026-01-12 at 7 24 18 PM" src="https://github.com/user-attachments/assets/1a26d919-2d54-4df5-95e9-7e9ebfdada1d" />
 
 *This setup is only required if you want to visualize telemetry data in Grafana.*
@@ -91,6 +93,7 @@ char[N] → Ns
 ```
 
 ### Creating or Extending Packets
+
 <img width="742" height="403" alt="Screenshot 2026-01-12 at 7 37 15 PM" src="https://github.com/user-attachments/assets/33b372d8-e23e-4b91-bc7e-9368e1f96539" />
 
 If you want to create your own packet from the documentation or extend an existing one:
@@ -103,6 +106,7 @@ This ensures the packet stays aligned and is parsed correctly.
 #### Packet IDs
 
 These packet IDs determine which telemetry category you are accessing (e.g., Motion, Lap Data, Car Telemetry).
+
 <img width="677" height="598" alt="Screenshot 2026-01-12 at 7 39 26 PM" src="https://github.com/user-attachments/assets/bbe2bd7e-210b-40e7-89ce-de9015b755b0" />
 
 Each packet ID maps to a specific data structure, allowing the application to route and process telemetry data correctly.
@@ -110,6 +114,9 @@ Each packet ID maps to a specific data structure, allowing the application to ro
 ------
 
 ### Grafana Tips
+<img width="285" height="61" alt="Screenshot 2026-01-13 at 12 04 52 PM" src="https://github.com/user-attachments/assets/c5ed4ea7-22af-4dcb-8158-4005480189c7" />
+
+- Make sure to enable this data source
 - Set panel calculation to “Last” for live values
 - Use Stat or Bar Gauge panels for telemetry
 - Lock time range to “Last 5 minutes” or less
