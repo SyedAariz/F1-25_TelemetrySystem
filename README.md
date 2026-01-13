@@ -84,3 +84,15 @@ Packet IDs
 These packet IDs determine which telemetry category you are accessing (e.g., Motion, Lap Data, Car Telemetry).
 <img width="677" height="598" alt="Screenshot 2026-01-12 at 7 39 26 PM" src="https://github.com/user-attachments/assets/bbe2bd7e-210b-40e7-89ce-de9015b755b0" />
 Each packet ID maps to a specific data structure, allowing the application to route and process telemetry data correctly.
+
+------
+
+### Grafana Tips
+- Set panel calculation to “Last” for live values
+- Use Stat or Bar Gauge panels for telemetry
+- Lock time range to “Last 5 minutes” or less
+- Use thresholds for throttle, brake, and RPM
+- Play around with panel types and settings to see what looks best for you
+- If nothing shows, check your API token, data source, and that the UDP listener is running
+
+
