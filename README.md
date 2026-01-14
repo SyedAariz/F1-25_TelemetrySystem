@@ -2,7 +2,8 @@
 
 This Python application listens for **UDP telemetry packets from F1 25** and displays the data on a **live Grafana dashboard** (real-time charts for things like speed, throttle, brake, RPM, etc.).
 
-*** VIDEO ***
+https://youtu.be/SUn1JK6MtBw
+
 
 ---
 
