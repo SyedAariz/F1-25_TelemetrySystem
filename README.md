@@ -103,7 +103,8 @@ python3 F1-25_Telemetry.py
 
 #### Grafana Setup (Required for Dashboard Visualization)
 
-<img width="575" height="202" alt="Screenshot 2026-01-12 at 7 24 18 PM" src="https://github.com/user-attachments/assets/1a26d919-2d54-4df5-95e9-7e9ebfdada1d" />
+<img width="754" height="86" alt="Screenshot 2026-01-14 at 12 38 10 PM" src="https://github.com/user-attachments/assets/41b97827-b4c4-42c6-8c4c-437dde89eb55" />
+
 
 *This setup is only required if you want to visualize telemetry data in Grafana.*
 
