@@ -69,7 +69,8 @@ The idea is simple:
 
 You need to set the game UDP settings to your **local device IP address**.
 
-<img width="1141" height="377" alt="image" src="https://github.com/user-attachments/assets/2fbaa038-4d5c-4e7d-9720-0b1ec4e20ddb" />
+<img width="1141" height="633" alt="Screenshot 2026-01-14 132949" src="https://github.com/user-attachments/assets/1188cfb6-e63e-4d51-90a4-87e6999b11fc" />
+
 
 ### Recommended Settings
 - ✅ **Disable UDP Broadcast Mode**  
