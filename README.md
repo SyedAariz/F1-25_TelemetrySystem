@@ -7,7 +7,7 @@ This Python application listens for **UDP telemetry packets from F1 25** and dis
     <img src="https://img.youtube.com/vi/SUn1JK6MtBw/maxresdefault.jpg" width="900" />
   </a>
 </p>
-
+<p align="center"><b>▶ Click to watch the F1 25 Telemetry Demo</b></p>
 
 
 
