@@ -93,6 +93,7 @@ Clone the repository
 ```bash
 git clone https://github.com/SyedAariz/F1-25_TelemetrySystem.git
 cd F1-25_TelemetrySystem
+python3 -m venv venv
 source venv/bin/activate
 python3 -m pip install requests pandas
 python3 F1-25_Telemetry.py
