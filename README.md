@@ -88,8 +88,11 @@ This project assumes you already have Grafana installed and running correctly.
 ### Requirements
 - Python 3.12 or higher
 - Install the telemetry package using:
+
+Clone the repository
 ```bash
-  pipx install f1-25_telemetry.py
+git clone https://github.com/SyedAariz/F1-25_TelemetrySystem.git
+cd F1-25_TelemetrySystem
 ```
 
 #### Grafana Setup (Required for Dashboard Visualization)
