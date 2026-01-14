@@ -93,6 +93,8 @@ Clone the repository
 ```bash
 git clone https://github.com/SyedAariz/F1-25_TelemetrySystem.git
 cd F1-25_TelemetrySystem
+python3 F1-25_Telemetry.py
+
 ```
 
 #### Grafana Setup (Required for Dashboard Visualization)
