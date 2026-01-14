@@ -10,8 +10,36 @@ This Python application listens for **UDP telemetry packets from F1 25** and dis
 <p align="center"><b>▶ Click to watch the F1 25 Telemetry Demo</b></p>
 
 
+<img width="1434" height="894" alt="Screenshot 2026-01-13 at 11 25 50 PM" src="https://github.com/user-attachments/assets/9d25b218-c3be-44d3-ac39-0588f861f4db" />
+
+This dashboard visualizes real-time vehicle telemetry streamed from the F1 game via UDP and rendered in Grafana. It is designed to give instant insight into driver inputs, vehicle behavior, tyre health, and race context.
 
 
+## Telemetry Dashboard Metrics
+
+### Speed (km/h)
+Purpose: Shows current vehicle speed for baseline performance reference.
+
+### Engine RPM
+Purpose: Indicates engine speed to analyze acceleration and shift behavior.
+
+### Brake vs Throttle
+Purpose: Displays driver input balance to evaluate driving smoothness.
+
+### Tyre Temperature
+Purpose: Monitors tyre temperatures to assess grip and balance.
+
+### Tyre Wear
+Purpose: Tracks tyre degradation to predict grip loss and stint length.
+
+### Tyre Pressure
+Purpose: Displays tyre pressure to optimize grip and stability.
+
+### Delta to Car in Front
+Purpose: Measures time gap to the car ahead for race positioning analysis.
+
+### Delta to Race Leader
+Purpose: Provides overall pace comparison against the race leader.
 
 ---
 
@@ -119,6 +147,8 @@ These packet IDs determine which telemetry category you are accessing (e.g., Mot
 <img width="677" height="598" alt="Screenshot 2026-01-12 at 7 39 26 PM" src="https://github.com/user-attachments/assets/bbe2bd7e-210b-40e7-89ce-de9015b755b0" />
 
 Each packet ID maps to a specific data structure, allowing the application to route and process telemetry data correctly.
+
+HERE IS THE DOCUMENTATION - [Data Output from F1 25 v3.pdf](https://github.com/user-attachments/files/24605758/Data.Output.from.F1.25.v3.pdf)
 
 ------
 
